@@ -1,0 +1,60 @@
+type Cliente {
+    nome: String!
+    email: String!
+    cep: String
+    uf: String
+}
+
+type Fornecedor {
+    nome: String!
+    email: String!
+    cep: String
+    uf: String
+}
+
+type Produto {
+    descricao: String!
+    precocusto: Float!
+    precovenda: Float!
+    quantidade: Int!
+}
+
+type Query{
+    allClientes (last: Int): [Cliente!]!
+    Cliente(id: ID!): Cliente 
+
+    allFornecedores (last: Int): [Fornecedor!]!
+    Fornecedor(id: ID!): Fornecedor 
+
+    allProdutos (last: Int): [Produto!]!
+    Produto(id: ID!): Produto
+}
+
+type Mutation{
+    createCliente (nome: String!, email: String!, cep: String!, uf: String!): Cliente! 
+    updateCliente (id: ID!, nome: String!, email: String!, cep: String!, uf: String!): Cliente! 
+    deleteCliente (id: ID!): Cliente! 
+
+    createFornecedor (nome: String!, email: String!, cep: String!, uf: String!): Fornecedor!
+    updateFornecedor (id: ID!, nome: String!, email: String!, cep: String!, uf: String!): Fornecedor!
+    deleteFornecedor (id: ID!): Fornecedor!
+
+    createProduto (descricao: String!, precocusto: Float!, precovenda: Float!, quantidade: Int!): Produto!
+    updateProduto (id: ID!, descricao: String!, precocusto: Float!, precovenda: Float!, quantidade: Int!): Produto!
+    deleteProduto (id: ID!): Produto!
+}
+
+type Subscription{
+    newCliente: Cliente!
+    updateCliente: Cliente!
+    deleteCliente: Cliente!
+
+    newFornecedor: Fornecedor!
+    updateFornecedor: Fornecedor!
+    deleteFornecedor: Fornecedor!
+
+    newProduto: Produto!
+    updateProduto: Produto!
+    deleteProduto: Produto!
+}
+
